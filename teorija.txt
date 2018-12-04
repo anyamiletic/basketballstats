@@ -1,0 +1,142 @@
+Списак питања за теоријски тест
+1. Рачунарска интелигенција, дефиниција и парадигме.
+	Racunarska intaligencija se definise kao mogucnost razumevanja i ostvarivanja koristi od razumevanja.
+	Paradigme: vestacke neuronske mreze, evolutivna izracunavanja, intaligencija grupa, vestacki imuni sistemi, fuzzy sistemi
+
+2. Вештачке неуронске мреже, дефиниција, биолошки неурон, вештачки неурон.
+	mreza sa slojevito poredjanim vestackim neuronima. Sadrzi ulazni, izlazni i nula i vise sredisnjih slojeva
+	bioloski neuroni su povezani sinapsama - endrita jednog i aksona drugog neurona. Neuron moze da suzbije ili pojacajacinu signala
+	vestacki neuron je model bioloskog neurona. ispaljivanje signala i njegova jacina kontolisana su formulom
+
+3. Функција активације.
+	Funkcija aktivacije neurona definiše njegov izlaz u zavisnosti od ulaza. (gausovska, sigmoid)
+
+4. Линеарна и нелинеарна раздвојивост.
+	linearna razdvojivost postavlja hiperravni koja razdvaja ulazne podatke na one sa izlazom ispod i iznad nekog praga
+	linearna nerazdvojivost - problem nije linearno nerazdvojiv
+
+5. Учење градијентним спустом, уопштено, реализација путем стохастичког градијентног
+спуста (само алгоритам, не морају извођења).
+	pravilo gradijentnog spusta omogucava iterativno azuriranje tezina
+	stohasticki alg:
+		inicijalizuj tezine ni, alpha, i broj epoha t=0
+		while(nije zadovoljen uslov za zavrsetak):
+			E=0;
+			for(svaki trening podatak p):
+				propagiraj unapred i racunaj y(j,p)(za svako j od 1 do J) i o(k,p)(za svako k od 1 do k)
+				racunaj signale gresaka delta(ok,p) i delta(ij,p)
+				azuriraj tezine w(kj) i v(ji) (propagacija gresaka unazad)
+				E += Ep
+			t = t+1;
+
+6. Типови и организација вештачких неуронских мрежа, слике са објашњењима.
+	mreze sa propagacijom unapred FFNN (izlaz se racuna pomocu jednog prolaska kroz mrezu)
+	rekurentne neuronske mreze (kopija skrivenog sloja se vraca na ulaz) (u drugom slucaju se kopija izlaza vraca na ulaz)
+	kaskadne neuronske mreze svi ulazi spojeni sa svim izlazima i svim srednjim slojevima
+
+7. Правила надгледаног и ненадгледаног учења.
+	nadgledano: cilj ucenja je aproksimirati datu funckiju na osnovu podataka. tokom ucenja minimizuje se empirijska greska
+	nenadgledano: algoritam ucenja mora samostalno da odredi postojanje pravilnosti u ulaznim podacima
+
+8. Асоцијативна неуронска мрежа и хебово учење.
+	asoc - obino dvoslojne, cilj je da omoguce stvaranje asocijacie
+	heb - tezine se azuriraju na osnovu korelacije izmedju aktivacionih vrednosti neurona,
+		postavlja se limit na vrednost tezina
+
+9. Самоорганизујуће мапе.
+	metoda vrsi projekciju I-dimenzionog ulaznog prostora u izlazni diskretni prostor
+	ideja je zadrzavanje topoloske strukture ulaznog prostora
+
+10. Фази скупови.
+	fazi skupovi omogucavaju da se pripadnost skupu definise sa nekom numerickom vrednoscu koja je izmedju 0 i 1
+
+11. Функције припадности фази скупу.
+	ogranicena izmedju 0 i 1; moze biti trougaona, trapezoidna, S, Z, gausovska
+
+12. Фази скуповне операције.
+	jednakost skupova - ako NIa(x) = NIb(x) za sve x iz X
+	podskupovi - akko NIa(x) <= NIb(x) za sve x iz X
+	komplment - NIaC(x) = 1 - NIa(x)
+	presek - minimum
+	unija - maksimum
+
+13. Карактеристике фази скупова.
+	normalnost
+	visina
+	podrska
+	jezgro
+	alpha-rez
+	unimodalnost
+	kardinalnost
+	normalizacija
+
+14. Фази и вероватноћа.
+	fazi je stepen pripadnosti, verovatnoca je mogucnost predvidjanja nekog dogadjaja
+
+15. Лингвистичке променљиве и модификатори.
+	lingvisticka promenljiva - promenljive cije su vrednosti reci prirodnog jezika
+	modifikatori su dodatne reci koje pojacavaju ili slabe efekat
+
+16. Мамаданијев метод – објаснити укратко све фазе.
+	
+
+17. Фазификација.
+	ulazni podaci se iz ulaznog prostora prevode u fazi reprezentaciju
+
+18. Примена правила закључивања у Мамаданијевом методу.
+	
+
+19. Дефазификација.
+	odredjivanje lingvostickih promenljivih za prethodno odredjene stepene pripadnosti zakljuccima
+	moza pomocu max-min, uprosecavanje, skaliranje, isecanje
+
+20. Оптимизација, дефиниција, изазови, кључни појмови.
+	cilj je pronaci resenje takvo da je neka ciljna funckija minimalna/maksimalna
+	izazovi: ogranicenja mogu biti nelinearna, fja cilja moze biti u konfliktu sa ogranicenjima
+	pojmovi: f:s->R funkcija cilja
+			skup x prestavlja nezavisne promenljive: f(x)
+			skup ogranicenja postavlja zavisnosti izmedju nezavisnih promenljivih	
+
+21. Типови оптимума и поделе метода оптимизације.
+	globalni optimum, jak lokalni optimum, slab lokalni optimum
+	metode prema fokusu pretrage: lokalne i globalne
+	metode prema pristupu pretrage: stohasticne i deterministicke
+
+22. Оптимизација без ограничења, дефиниција, пример.
+	treba minimizovati funkciju f(x), x=(x1,x2,..xnx)
+	primer pronaci minimum fje f(x,y) = x^2+y^2 na domenu realnih brojeva
+
+23. Оптимизација са ограничењима, дефиниција, слика са објашњењима кључних појмова,
+рад са недопустивиим решења.
+	
+
+24. Домен простора решења и типови оптимизације према домену.
+
+
+25. Комбинаторна оптимизација, дефиниција, пример, приступи решавању и њихово
+поређење.
+
+
+26. Проблеми одлучивања.
+
+
+27. Класе проблема: полиномско, експоненцијално решиви проблеми, недетерминистички
+полиномски проблеми.
+
+
+28. Редукција проблема.
+
+
+29. NP потпуни проблеми и како решавати проблеме.
+
+
+30. Еволуција и принцип природне селекције.
+31. Еволутивна израчунавања, уопштени еволутивни алгоритам, типови еволутивних
+алгоритама.
+32. Кодирање решења.
+33. Фитнес функција решења.
+34. Иницијализација решења.
+35. Оператор селекције.
+36. Оператор укрштања.
+37. Оператор мутације.
+38. Критеријуми заустављања еволутивног алгоритма. 
