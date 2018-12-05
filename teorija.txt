@@ -131,12 +131,48 @@
 
 
 30. Еволуција и принцип природне селекције.
+	evolucija se moze smatrati optimizacionim procesom sa ciljem poboljsanja
+	prilagodjenosti jedinke u dinamickoj i takmicarski nastrojenoj sredini
+	svaka jedinka se takmici sa ostalima u cilju prezivljavanja
+	najbolje prilagodjena jedinka ima najvece sanse da prezivi i ostavi
+	potomstvo. zbog toga cesce prenose svoje gene. vremenom te pogodne
+	karakterisike postaju dominantne u populaciji. tokom stvaranja potomka
+	igraju i ukrstanje i mutacija
 31. Еволутивна израчунавања, уопштени еволутивни алгоритам, типови еволутивних
 алгоритама.
+	imitiraju proces evolucije kroz prirodnu selekciju, ukrstanje i mutaciju
+	jedinke u populaciji kodiraju resenje nekog problema
+	evolutivni algoritmi traze resenje pretragom prostora resenja, jedinke
+	su tacke u prostoru resenje
+	tipovi: genetski algoritmi, genetsko programiranje, evolutivno programiranje,
+	evolutivne strategije, diferencijalna evolucija, kulturna evolucija, koevolucija
 32. Кодирање решења.
+	klasican primer reprezentacije je binarni vektor fiksirane duzine
+	moze biti zasnovano i na nizu celih brojeva fiksirane duzine
+	
 33. Фитнес функција решења.
+	fitnes fja je mera kvaliteta (apsolutna ili relativna u odnosu na druge)
+	jedinke. obicno je jednaka funckiji cilja
 34. Иницијализација решења.
+	nasumicno odabrati pocetnu populaciju; slucajan uzorak ima dobru reprezantativnost
+	diverzifikacija - velika populacija omogucuje bolju pokrivenst i vecu sansu
+	za nalazenje globalnom maksimuma
+	intenzifikacija - mala populacija je efikasnija i omogucava brzu konvergenciju
+	ka lokalnom optimumu
 35. Оператор селекције.
+	ruletska selekcija daje vecu sansu boljim jedinkama: f(x) / suma f(xi)
+	turnirska selekcija - variranjem velicine podskupa turnira menja se selekcioni
+	pritisak
+	rangovska selekcija - koristi se redni broj u biranju jedinki za ukrstanje
 36. Оператор укрштања.
+	podrazumeva upotrebu operatora ukrstanja (rekombinacije gena) i 
+	mutacije (promene nasumicnih gena)
 37. Оператор мутације.
-38. Критеријуми заустављања еволутивног алгоритма. 
+
+38. Критеријуми заустављања еволутивног алгоритма.
+	posle fiskiranog broja generacija
+	posle fiksiranog perioda vremena
+	u poslednjih p generacija nije bilo unapredjenja
+	u poslednjih p generacija nije bilo promene u genotipu
+	nadjeno je prihvatljivo resenje
+	negib fitnes fje se vise ne povecava
