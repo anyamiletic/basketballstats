@@ -1,0 +1,305 @@
+Android ispod haube – ispitna pitanja
+- 1 -
+1. Android platforma koristi standardno Linux jezgro bez dodataka?
+	a) Da 	
+	(b) Ne 	-
+2. Nabrojte 4 osnovna nivoa Android arhitekture.
+	-kernel layer
+	-Runtime layer
+	-Frameworks layer
+	-Application layer
+
+3. Zašto je većina koda u Android-u objavljeno pod Apache licencom.
+	-veca pogodnost upotrebe za koercijalne svrhe?
+
+4. Zašto je Linux kernel odabran kao baza Android sistema?
+	-odlicno rukovanje procesima i memorijom
+	-sigurnosni sistem zasnovan na ovlascenjima
+	-dokazan model sisteskih rukovalaca
+	-podrska za deljene biblioteke
+	-stabilan
+	-izvorni kod je open source
+
+5. Nabrojte bar 4 Android Linux kernel dodatka.
+	-Binder
+	-Logger
+	-Power Menager
+	-Alarm
+
+6. Šta je bionic?
+	-izvorna biblioteka
+	-prilagodjena libc implementacija, optimizovana za
+		koriscenje u integrisanim sistemima
+
+7. Zašto bionic? (zaokružiti sve tačne odgovore)
+		a) Portabilnost
+	(b) Brzina
+		c) Prilagođenost ARM arhitekturi
+		d) Ugrađena podrška za manipulisanje prozorima
+	(e) Licenca
+		f) Podrška za virtuelne mašine
+		g) Modularnost
+	(h) Prilagođenost sa POSIX standardom
+		i) Veličina
+
+8. Zašto se koristi bionic umesto glibc biblioteke?
+	-manja velicina, brzina
+
+9. Šta je to webkit?
+	-biblioteka funkcija; podrska za renderovanje stranice u desktop rezimu
+
+10. Šta je to surface flinger? Šta je to audio flinger?
+	-surface flinger spaja fise surface-a u jedan frejm bafer uredjaj
+	-audio flinger rukovodi svim izlaznim audio uredjajima
+
+11. Koja je uloga HAL nivoa izvršnih biblioteka (zaokružiti sve tačne odgovore)?
+	(a) Apstrakcija specifičnosti hardverskog uređaja od viših softverskih nivoa
+	(b) Izbegavanje GPL licence u user-space rukovaocima
+		c) Omogućavanje lakšeg razvoja korisničkih Java aplikacija
+		d) Sprega ka bionic virtuelnoj mašini
+
+12. Zašto se koristi Dalvik VM umesto već postojećih Java VM (Oracle)?
+	-izvrsava se u uslovima sa malo radne memorije, u uslovima rada
+		na bateriji, na sporijim procesorima
+
+13. Koja je razlika između Dalivk i ART izvršnog okruženja?
+	-dalvik je interpreter, art se kompilira
+	-dalvik izvrsava .odex datoteke, art izvrsava .elf datoteke
+
+14. Koja je razlika između Android i Linux build sistema?
+	-android sistem se ne oslanja na make fajlove (koristi se anroid.mk)
+	-android se oslanja na skup romenkjivih koje mogu biti postavljene
+		dinamicki, a ne alate poput menuconfig
+
+15. Koja je ekstenzija Android make fajlova? Da li postoje regularni Linux Makefile fajlovi u Android sistemu za
+generisanje izvršnog koda?
+	-ekstenzija .mk
+	-postoji samo jedan makefile, nalazi se u korenu stabla izvornog koda
+
+
+16. Da li se regularni Linux Makefile fajlovi mogu koristiti samostalno u Android sistemu za generisanje 
+izvršnog koda?
+		a) Da
+	b) Ne -
+
+
+17. Koje komande je potrebno izvršiti da bi se sistem za generisanja koda doveo u početno stanje?
+	build/envsetup.sh
+
+
+18. Nakon postavlja sistema za generisanje koda u početno stanje koje sve dodatne komande je moguće
+izvršiti? Nabrojte bar 5.
+	printconfig
+	croot
+	m
+	mm
+	mma
+
+19. Koja je razlika izmešu make i make snod komande?
+	-make snod generise sistemsku sliku od trenutno generisanih 
+		softvarskih modula
+
+20. Šta su to recepti u sistemu za generisanje koda? Nabrojte bar 4 vrste recepta.
+	-recepti su nacin da se android sistemu za generisanje izvrsng koda saopsti
+		sta se zeli i u kojoj formi nesto prevesti
+	-build-executable
+	-build-host-executable
+	-build-shared-library
+	-build-host-shared-library
+	-build-package
+
+21. Gde se smeštaju generisane datoteke? Zašto je izvorni kod razdvojen od generisanog?
+	
+
+22. Opišite ukratko kako funkcioniše sistem za generisanje koda.
+	
+
+23. Napišite čemu sledeći recepti u sistema za generisanje koda:
+	a) BUILD_EXECUTABLE - pravi izvrsnu datoteku za ciljani uredjaj
+	b) BUILD_STATIC_LIBRARY - pravi staticku biblioteku za ciljani uredjaj
+	c) BUILD_SHARED_LIBRARY - pravi deljenu biblioteku za ciljani uredjaj
+	d) BUILD_PACKAGE - pravi AOSP aplikaciju za ciljani uredjaj
+	e) CLEAR_VARS - brise LOCAL_* proenljive
+	f) call my-dir - vraca putanju do direktorijuma u kom se nalazi android.mk
+
+24. Napišite čemu sledeći promenljive iz sistema za generisanje koda:
+	a) LOCAL_C_INCLUDES - spisak putanja na kojima se nalaze c/c++ header datoteke
+	b) LOCAL_MODULE - naziv modula koji se prevodi
+	c) LOCAL_SHARED_LIBRARIES - spisak deljenih datoteka koje se ukljucuju u prevodjenje modula
+	d) LOCAL_SRC_FILES - spisak datoteka koje se prevode
+
+25. Šta će napraviti sledeća Android make datoteka? Objasnite ukratko svaku liniju.
+LOCAL_PATH := $(call my-dir) 
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := callstack_example.cpp
+LOCAL_MODULE := callstack_example
+LOCAL_SHARED_LIBRARIES:= libutils
+include $(BUILD_EXECUTABLE)
+
+Android ispod haube – ispitna pitanja
+- 3 -
+
+26. Šta će napraviti sledeća Android make datoteka? Objasnite ukratko svaku liniju.
+LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := sample_code.cpp
+LOCAL_MODULE := libsamplelibrary
+LOCAL_STATIC_LIBRARIES:= libmatfutils
+include $(BUILD_SHARED_LIBRARY)
+
+27. U kom direktorijumu na ciljanoj platformi se smeštaju izvršne datoteke? Gde se smeštaju statičke i
+dinamičke biblioteke?
+
+
+28. Navedite bar 4 alata za otkrivanje grešaka u Android programima.
+	-adb, am, CallStack, GDB
+
+29. Šta je to ADB? Ukratko opišite kako funkcioniše ADB na lokalnom računaru i razvojnom uređaju.
+	-alat koji omogucuje rukovanje stanjem emulatora ili Android uredjaja
+	-na lokalnom racunaru (klijentu) poziva se iz konzole. server se izvrsava kao pozadinski proces
+		na lokalnom racunaru. server se izvrsava kao pozadinski proces na svakoj instanci
+		razvojnog uredjaja
+
+30. Čemu služe sledeće ADB komande?
+	a) pull - kopiranje datoteka sa razvojnog uredjaja na lokalni racunar
+	b) push - kopiranje datoteka sa lokalnog racunara na razvojni uredjaj
+	c) remount - postavljanje sistemske particije u rezim za citanje i pisanje
+	d) install - korisit se za instalaciju APK datoteka
+	e) shell - koristi se za zadavanje komandi bez ulaska na udaljeni shell adb uredjaja
+
+
+31. Šta je to logcat? Opišite kako funkcioniše logcat.
+	-alat za sakupljanje i i pregled poruka iz Andorid-ovog log sistema
+	-
+
+32. Koja je prednost korišćenja logcat-a umesto printf*-a?
+	-omoguvava citanje poruka u realnom vremenu
+
+33. Šta radi sledeća komanda?
+adb logcat MyApp:* MyApp2:I *:S
+	-ispisace se samo one poruke koje su eksplicitno navedene
+
+34. Šta radi sledeća komanda?
+adb logcat -S MyApp1 MyApp2
+	-postavlja vrednost filtera na ne ispisuj
+
+35. Kako tražiti grešku u Android aplikaciji koja je prešla u ANR (engl. Application Not Responding) stanje?
+	-koriscenjem GDB alata, odnosno pomocu gdbclient
+
+36. Opišite kako se koriste Callstack i addr2line alati.
+	-koriste se u izvrsnim programima
+
+37. Šta je to GDB? Opišite kako funkcioniše GDB.
+	-gdb je debager  
+
+38. Šta je to init process i kako on funkcioniše?
+	-init proces je program koji pokrece Android sistem
+	-prilikom pokretanja pravi kljucne direktorijume na uredjaju, izvrsava .rc datoteke,
+		u beskonacnoj petlji pokrece servise restartuje servise koji se ruse
+
+
+Android ispod haube – ispitna pitanja
+- 4 -
+
+
+39. Navedite bar 4 vrste predefinisanih okidača u init jeziku.
+	-init-fs-boot-charger
+
+40. Navedite bar 4 komande u init jeziku.
+	-start-stop-restart-exec
+
+41. Kako je sve moguće dodati novo svojstvo? Navedite bar 2 načina.
+	-u buildtime(u productu) i runtime(u build.prop)
+
+42. Kako je sve moguće proširiti Android svojstvo? Navedite bar 2 načina.
+	-property.set
+	-adb shell setprop
+
+43. Šta su to Android svojstva?
+	-nacin za deljenje vrednosti globalno kroz sve slojeve androida.
+
+44. Napišite adb shell komandu koja će pročitati ro.hardware Android svojstvo.
+	-adb shell getprop ro.hardware
+
+45. Napišite adb shell komandu koja će postaviti vrednost 1 u Android svojstvo matf.android.test.
+	adb shell setprop matf.android.test 1
+
+46. Koja je posledice sledećeg koda u init.*rc datoteci?
+on boot
+ setprop rtrk.android RTRK
+ -postavlja vrednost adnroid svosjtva rtrk.andoid na Rtrk
+
+47. Sledeći kod je dodat u init.*.rc datoteku. Koje su posledice njegovog izvršavanja? Ukratko objasnite svaku
+liniju.
+on boot
+ start testservice
+service testservice /system/bin/mfservice
+ user root
+ group root
+ oneshot
+ -
+
+48. Da li je moguće otkriti greške u init.*.rc datotekama prilikom prevođenja Android koda? Ako da, zašto da,
+ako ne, zašto ne?
+
+
+49. Navedite par 3 načina za komunikaciju između 2 procesa u Android-u.
+	-
+
+50. Šta je Binder i zašta se koristi?
+	-okruzenje koje se koristi za razmenu podataka izmedju 2 ili vise procesa
+	- koristi se za prosledjivanje poruka, sinhronizaciju, deljenje memorije
+
+51. Navedite prednosti i mane Binder-a.
+	-prednosti: serijalizacija i deserijalizacija vecine standardnih tipova
+		rekurzija kroz procese
+		mod lokalnog izvrsavanja ukoliko su klijent i servis u okviru istog procesa
+	-mane: komuikacija nije dobro pirlagodjena za razmenu tokova podataka
+		nije deo nekog standarda
+
+52. Šta je to Parcel i za šta se koristi?
+	-
+
+53. Šta je to servicemanager servis i zašto se on obavezno prvi pokreće u Android-u?
+
+
+54. Šta je to AIDL i za šta se koristi?
+
+
+55. Navesti dva ograničenja Binder IPC mehanizma:
+a) ________________________________________________________________
+b) ________________________________________________________________
+
+
+56. Opisati ukratko kako je u Androidu implementiran mehanizam deljenja memorije između dva procesa.
+Kada se ovaj mehanizam koristi i zašto?
+
+Android ispod haube – ispitna pitanja
+- 5 -
+
+
+57. Šta je JNI?
+a) Programska sprega koja omogućava pozive između Java i native programskih rešenja.
+	b) Pristup za optimizaciju programskih rešenja pisanih Java programskim jezikom.
+	c) Programska sprega za pristup mrežnom adapteru na novu Java programskog jezika.
+
+
+58. Kako se zove alat za generisanje deklaracija native funkcija Java programske klase?
+a) javac
+b) javah -
+c) javan
+
+
+59. Kako se učitava native programska biblioteka iz Jave?
+	a) Class.loadLibrary("example");
+	b) System.loadLibrary("libexample");
+c) System.loadLibrary("example");
+	d) Util.loadLibrary("libexample");
+
+
+60. Koji su razlozi za implementaciju native metoda u Javi?
+a) Upotreba postojećih programskih rešenja
+b) Modularnost
+c) Optimizacija
+d) Sigurnost podataka
+e) Pristup fizičkim komponentama sistema
