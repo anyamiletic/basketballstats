@@ -244,7 +244,7 @@ ako ne, zašto ne?
 
 
 49. Navedite par 3 načina za komunikaciju između 2 procesa u Android-u.
-	-
+	-binder, ashmem, parcel?
 
 50. Šta je Binder i zašta se koristi?
 	-okruzenje koje se koristi za razmenu podataka izmedju 2 ili vise procesa
@@ -268,11 +268,15 @@ ako ne, zašto ne?
 
 55. Navesti dva ograničenja Binder IPC mehanizma:
 a) ________________________________________________________________
+binder podrzava max 15 binder niti po jednom procesu
 b) ________________________________________________________________
-
+binder limitira svoj bafer za transakcije na 1MB po procesu
 
 56. Opisati ukratko kako je u Androidu implementiran mehanizam deljenja memorije između dva procesa.
 Kada se ovaj mehanizam koristi i zašto?
+-preko Ashmem koji koristi virtuelnu susednu memoriju
+-Prilikom zauzimanja memorije dobija se file descriptor koji predstavlja
+jedinstveni indentifikator deljenog regiona
 
 Android ispod haube – ispitna pitanja
 - 5 -
