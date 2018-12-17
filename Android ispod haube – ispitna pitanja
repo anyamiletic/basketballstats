@@ -191,16 +191,13 @@ adb logcat -S MyApp1 MyApp2
 
 37. Šta je to GDB? Opišite kako funkcioniše GDB.
 	-gdb je debager  
+	
+-----sistemsko programiranje u androidu
 
 38. Šta je to init process i kako on funkcioniše?
 	-init proces je program koji pokrece Android sistem
 	-prilikom pokretanja pravi kljucne direktorijume na uredjaju, izvrsava .rc datoteke,
 		u beskonacnoj petlji pokrece servise restartuje servise koji se ruse
-
-
-Android ispod haube – ispitna pitanja
-- 4 -
-
 
 39. Navedite bar 4 vrste predefinisanih okidača u init jeziku.
 	-init-fs-boot-charger
@@ -231,12 +228,12 @@ on boot
 
 47. Sledeći kod je dodat u init.*.rc datoteku. Koje su posledice njegovog izvršavanja? Ukratko objasnite svaku
 liniju.
-on boot
- start testservice
+on boot 	--nakon butovanja
+ start testservice 	--pokreni servis
 service testservice /system/bin/mfservice
- user root
- group root
- oneshot
+ user root 	--korisnik kome pripada servis
+ group root 	--grupa kojoj pripada servis
+ oneshot 	--pokreni servis samo jednom
  -
 
 48. Da li je moguće otkriti greške u init.*.rc datotekama prilikom prevođenja Android koda? Ako da, zašto da,
@@ -244,7 +241,7 @@ ako ne, zašto ne?
 
 
 49. Navedite par 3 načina za komunikaciju između 2 procesa u Android-u.
-	-binder, ashmem, parcel?
+	-binder, semafori, signali
 
 50. Šta je Binder i zašta se koristi?
 	-okruzenje koje se koristi za razmenu podataka izmedju 2 ili vise procesa
@@ -258,13 +255,15 @@ ako ne, zašto ne?
 		nije deo nekog standarda
 
 52. Šta je to Parcel i za šta se koristi?
-	-
+	-Container for a message (data and object references) that can be sent through an IBinder
+	-kontejner za poruke koje se salju kroz IBinder
 
 53. Šta je to servicemanager servis i zašto se on obavezno prvi pokreće u Android-u?
-
+	daje listu svih pokrenutih i trenutno registrovanih servisa
 
 54. Šta je to AIDL i za šta se koristi?
-
+	-jezik za opis operacijama IBinder sprezi
+	-generise proxy i stub deove za java ipc komunikaciju
 
 55. Navesti dva ograničenja Binder IPC mehanizma:
 a) ________________________________________________________________
@@ -274,9 +273,9 @@ binder limitira svoj bafer za transakcije na 1MB po procesu
 
 56. Opisati ukratko kako je u Androidu implementiran mehanizam deljenja memorije između dva procesa.
 Kada se ovaj mehanizam koristi i zašto?
--preko Ashmem koji koristi virtuelnu susednu memoriju
--Prilikom zauzimanja memorije dobija se file descriptor koji predstavlja
-jedinstveni indentifikator deljenog regiona
+	-preko Ashmem koji koristi virtuelnu susednu memoriju
+	-Prilikom zauzimanja memorije dobija se file descriptor koji predstavlja
+		jedinstveni indentifikator deljenog regiona
 
 Android ispod haube – ispitna pitanja
 - 5 -
